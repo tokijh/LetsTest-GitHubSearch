@@ -20,7 +20,18 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UIViewController()
+
+        let viewModel = RepositoryListViewModel()
+        let viewController = RepositoryListViewController(
+            viewModel: viewModel
+        )
+        let navigationController: UINavigationController = {
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.prefersLargeTitles = true
+            return navigationController
+        }()
+
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
     }
