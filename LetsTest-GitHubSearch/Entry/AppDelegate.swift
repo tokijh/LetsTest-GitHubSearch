@@ -7,7 +7,6 @@
 
 import UIKit
 
-@main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Application Delegate
@@ -16,6 +15,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+
+        print("Hello")
+
         return true
     }
 

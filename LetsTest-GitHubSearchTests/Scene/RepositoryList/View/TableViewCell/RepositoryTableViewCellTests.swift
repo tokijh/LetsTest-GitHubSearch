@@ -15,8 +15,13 @@ final class RepositoryTableViewCellTests: XCTestCase {
      */
     func testStarCountLabel() {
         // given
+        let cell = RepositoryTableViewCell()
+
         // when
+        cell.setRepository(Repository(name: "ReactorKit", stargazersCount: 12345))
+
         // then
+        XCTAssertEqual(cell.starCountLabel.text, "12,345 개")
     }
 
 }

@@ -15,8 +15,34 @@ final class RepositoryListViewModelTests: XCTestCase {
      */
     func testSearch() {
         // given
+        let viewModel = RepositoryListViewModel(
+            repositorySearchService: RepositorySearchServiceStub()
+        )
+        let delegate = DelegateStub()
+        viewModel.delegate = delegate
+
         // when
+        viewModel.search(repositoryName: "ReactorKit")
+
         // then
+        XCTAssertTrue(delegate.receivedValue?.contains(where: { repository in repository.name == "ReactorKit" }) == true)
     }
 
+}
+
+private final class DelegateStub: RepositoryListViewModelDelegate {
+    func setLoading(_ isLoading: Bool) {
+
+    }
+
+    var receivedValue: [Repository]?
+    func showRepositories(_ repositories: [Repository]) {
+        receivedValue = repositories
+    }
+}
+
+private final class RepositorySearchServiceStub: RepositorySearchServiceType {
+    func searchRepositories(by name: String, completion: @escaping (Result<[Repository], Error>) -> Void) {
+        completion(.success([Repository(name: "ReactorKit", stargazersCount: 10000)]))
+    }
 }

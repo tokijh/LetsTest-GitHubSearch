@@ -21,7 +21,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
 
-        let viewModel = RepositoryListViewModel()
+        let repositorySearchService = GitHubRepositorySearchService()
+        let viewModel = RepositoryListViewModel(repositorySearchService: repositorySearchService)
         let viewController = RepositoryListViewController(
             viewModel: viewModel
         )

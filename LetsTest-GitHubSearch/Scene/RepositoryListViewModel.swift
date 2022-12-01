@@ -30,17 +30,21 @@ final class RepositoryListViewModel: RepositoryListViewModelType {
 
     weak var delegate: Delegate?
 
+    private let repositorySearchService: RepositorySearchServiceType
+
 
     // MARK: Initializer
 
-    init() { }
+    init(repositorySearchService: RepositorySearchServiceType) {
+        self.repositorySearchService = repositorySearchService
+    }
 
 
     // MARK: Action
 
     func search(repositoryName: String) {
         delegate?.setLoading(true)
-        GitHubRepositorySearchService.shared.searchRepositories(by: repositoryName) { result in
+        repositorySearchService.searchRepositories(by: repositoryName) { result in
             switch result {
             case let .success(repositories):
                 self.delegate?.showRepositories(repositories)

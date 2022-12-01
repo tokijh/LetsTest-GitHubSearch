@@ -67,8 +67,8 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     func setRepository(_ repository: Repository) {
         nameLabel.text = repository.name
-        // starCountLabel.text = "\(repository.stargazersCount) 개"
-        starCountLabel.text = "\(Int.random(in: 0...10000)) 개" // 테스트 코드. 나중에 지워야지~
+        let formattedStarCount = Formatter.starCountNumber(repository.stargazersCount)
+        starCountLabel.text = "\(formattedStarCount) 개"
     }
 
 }

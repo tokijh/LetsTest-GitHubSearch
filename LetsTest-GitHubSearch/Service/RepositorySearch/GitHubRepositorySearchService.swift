@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class GitHubRepositorySearchService {
+protocol RepositorySearchServiceType {
+    func searchRepositories(by name: String, completion: @escaping (Result<[Repository], Error>) -> Void)
+}
+
+final class GitHubRepositorySearchService: RepositorySearchServiceType {
 
     static let shared = GitHubRepositorySearchService()
 

@@ -34,7 +34,7 @@ final class RepositoryListViewController: UIViewController {
 
     // MARK: UI
 
-    let tableView = UITableView()
+    private let tableView = UITableView()
     let searchController = UISearchController(searchResultsController: nil)
     let loadingIndicator = UIActivityIndicatorView()
 

@@ -85,7 +85,7 @@ final class RepositoryListViewControllerTests: XCTestCase {
         XCTWaiter().wait(for: [XCTestExpectation()], timeout: 1) // Repositories 가 설정될 때까지 기다림
 
         // when
-        let tableView = viewController.tableView
+        let tableView = viewController.testables[\.tableView]
         tableView.delegate?.tableView?(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
 
         // then
